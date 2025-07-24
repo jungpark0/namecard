@@ -1,301 +1,71 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-::selection {
-  background: black;
-  color: white;
-}
-
-::-moz-selection {
-  background: black;
-  color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
 body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  padding: 2px;
-  background-color: white;
-  font-family: "helvetica", sans-serif;
-  font-weight: 500;
+    width: 100%;
+    height: 100%;
+    font-family: "Noto Sans Kr", sans-serif;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.card-container {
+    width: 450px;
+    height: 250px;
+
+    perspective: 1100px;
+    cursor: pointer;
+}
+  
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    transform-style: preserve-3d;
+    transition: transform 1.5s ease;
+}
+
+.card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: filter 0.5s ease;
 }
 
 
-.container {
-  display: grid;
-  position: relative;
-
-  grid-template-columns: 100px auto;
+.card.flipped {
+    transform: rotateY(180deg);
 }
 
-p {
-  margin: 0;
-  padding: 0;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.4;
-  display: inline-block;
-  width: max-content;
-}
-
-/*n년도 메뉴*/
-.menu {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.4;
-  cursor: pointer;
-  grid-column: 1/2;
-  display: inline-block;
-  width: max-content;
-  height: max-content;
-}
-
-.menu1 :hover, .menu2 :hover, .menu3 :hover, .menu4 :hover {
-  text-decoration: underline;
-}
-
-.menu1 {
-  grid-row: 2/3;
-}
-.menu2 {
-  grid-row: 3/4;
-}
-.menu3 {
-  grid-row: 4/5;
-}
-.menu4 {
-  grid-row: 5/6;
-}
-
-/*세부작업 내용*/
-.list2025 {
-  grid-row: 2/3;
-}
-.list2024 {
-  grid-row: 3/4;
-}
-.list2023 {
-  grid-row: 4/5;
-}
-.list2002 {
-  grid-row: 5/6;
+.back {
+    transform: rotateY(180deg);
 }
 
 
-.list2024, .list2025, .list2023, .list2002{
-  margin: 0;
-  padding: 0;
-  display: none;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.4;
-  grid-column: 2/3;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/*세부작업 이미지,텍스트 호버 관련*/
-#introducetext {
-  display: none;
-  position: absolute;
-  top: 25px;
-  left: 235px;
-}
-
-#namecardtext {
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: 650px;
-}
-
-#milkteaimage {
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: 450px;
-  width: 370px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-}
-
-#kikyoahkitext {
-  display: none;
-  position: absolute;
-  top: 100px;
-  left: 177px;
-}
-
-#sauspawseoulimage {
-  display: none;
-  position: absolute;
-  top: 80px;
-  left: 360px;
-  width: 300px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-}
-
-#newyearimage {
-  display: none;
-  position: absolute;
-  top: 200px;
-  left: 400px;
-  width: 600px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-}
-#thelastbiteimage {
-  display: none;
-  position: absolute;
-  top: 30px;
-  left: 400px;
-  width: 300px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-}
-#musicistext {
-  font-family: "Noto sans Kr", sans-serif !important;
-  word-spacing: 0;
-  letter-spacing: -0.3px;
-  display: none;
-  position: absolute;
-  top: 400px;
-  left: 320px;
-  width: 400px;
-  font-size: 14px;
-  font-weight: 400;
-  text-align: left;
-  word-break: break-all;
-  line-height: 1.4;
-}
-#whatilikeimage {
-  display: none;
-  position: absolute;
-  top: 170px;
-  left: 380px;
-  width: 500px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-}
-#hideoutimage {
-  display: none;
-  position: absolute;
-  top: 100px;
-  left: 370px;
-  width: 600px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-}
-#typo1image {
-  display: none;
-  position: absolute;
-  top: 210px;
-  left: 350px;
-  width: 300px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-}
-#birthtext {
-  display: none;
-  position: relative;
-  top: -25px;
-  left: 450px;
-}
-
-#musicis:hover + #musicistext,
-#birth:hover + #birthtext,
-#typo1:hover + #typo1image,
-#hideout:hover + #hideoutimage,
-#whatilike:hover + #whatilikeimage,
-#thelastbite:hover + #thelastbiteimage, 
-#newyearcard:hover + #newyearimage,
-#sauspawseoul:hover + #sauspawseoulimage,
-#kikyoahki:hover + #kikyoahkitext,
-#milktea:hover + #milkteaimage,
-#namecard:hover + #namecardtext,
-#introduce:hover + #introducetext {
-  display: block;
-}
-
-/*사라지는 꿈 팝업*/
-.hidden {
-  display: none !important;
-}
-
-#hideoutpopup, #typo1popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-#hideoutpopupimage, #typo1popupimage {
-  height: 70%;
-}
-
-
-button {
-  all: unset;
-  cursor: pointer;
-  position: absolute;
-  color: white;
-  font-size: 25px;
-}
-#hideoutclose, #typo1close {
-  top: 10px;
-  left: 10px;
-}
-
-#hideoutprev {
-  left: 10px;
-  transform: translateY(-50%);
-}
-
-#hideoutnext {
-  right: 10px;
-  transform: translateY(-50%);
+.card-inner:hover {
+    filter: blur(2px)
+            brightness(130%);
+    transition: 1s ease;
 }
 
 @media (max-width: 767px) {
-  #musicis:hover + #musicistext,
-  #birth:hover + #birthtext,
-  #typo1:hover + #typo1image,
-  #hideout:hover + #hideoutimage,
-  #whatilike:hover + #whatilikeimage,
-  #thelastbite:hover + #thelastbiteimage, 
-  #newyearcard:hover + #newyearimage,
-  #sauspawseoul:hover + #sauspawseoulimage,
-  #milktea:hover + #milkteaimage,
-  #namecard:hover + #namecardtext,
-  #introduce:hover + #introducetext  {
-    display: none;
-  }
+    .card-container{
+        width: 87%;
+    }
+    .card-inner:hover {
+        filter: none;
+    }
 }
-
-
-
-
-
-
-footer {
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  font-size: 16px;
-
-}
+  
